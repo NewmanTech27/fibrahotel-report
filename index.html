@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fibra Hotel · Análisis Solar+BESS — Newman Energy</title>
+  <meta name="description" content="Documento protegido. Análisis de simuladores de ahorro Solar+BESS para Fibra Hotel." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="assets/css/newman.css" />
+  <link rel="stylesheet" href="assets/css/report.css" />
+  <style>
+    body.locked { overflow: hidden; }
+    #gate { position: fixed; inset: 0; background: var(--navy); color: var(--on-dark);
+      display: grid; place-items: center; z-index: 50; padding: 24px; }
+    #gate .box { max-width: 420px; width: 100%; text-align: center; }
+    #gate .kick { color: #D9B3D0; justify-content: center; }
+    #gate h1 { color: #fff; font-size: 1.6rem; margin-bottom: 10px; }
+    #gate p { color: var(--on-dark); opacity: .8; font-size: .95rem; margin-bottom: 26px; }
+    #gate-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    #gate-pass { flex: 1; min-width: 200px; padding: 13px 16px; border-radius: 100px; border: 1px solid #3a3c6e;
+      background: #23255c; color: #fff; font-size: 1rem; font-family: var(--body); }
+    #gate-pass:focus { outline: 2px solid var(--magenta); }
+    #gate-btn { padding: 13px 28px; border-radius: 100px; border: 0; background: var(--magenta); color: #fff;
+      font-family: var(--display); font-weight: 600; font-size: 1rem; cursor: pointer; }
+    #gate-btn:disabled { opacity: .6; cursor: default; }
+    #gate-err { color: #F4B8B8; font-size: .85rem; margin-top: 14px; min-height: 1em; }
+    #gate .note { margin-top: 22px; font-size: .75rem; opacity: .55; }
+  </style>
+</head>
+<body class="locked">
+
+  <div id="gate">
+    <div class="box">
+      <div class="kick">Newman Energy · Confidencial</div>
+      <h1>Documento protegido</h1>
+      <p>Este análisis contiene datos de consumo y financieros de Fibra Hotel.
+        Ingrese la contraseña para descifrar el contenido en su navegador.</p>
+      <form id="gate-form" autocomplete="off">
+        <input id="gate-pass" type="password" placeholder="Contraseña" aria-label="Contraseña" autofocus />
+        <button id="gate-btn" type="submit">Entrar</button>
+      </form>
+      <div id="gate-err" role="alert"></div>
+      <div class="note">Cifrado AES-256-GCM · el contenido nunca viaja sin cifrar.</div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="kick">Newman Energy · Análisis independiente</div>
+      <h1>Simuladores de ahorro Solar+BESS de Fibra Hotel, revisados a fondo</h1>
+      <p class="lede">Seis libros de Excel, un comité de tres especialistas —integridad de datos,
+        física de energía y finanzas de proyecto— y una pregunta: ¿los números tienen sentido?</p>
+      <div class="meta">
+        <span>6 sitios · tarifa GDMTH</span><span>Periodo Abr 2025 – Mar 2026</span>
+        <span>MXN, sin IVA</span><span>Consumo real de recibo CFE</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section"><div class="wrap">
+    <div class="kick">Panorama</div>
+    <h2>El portafolio de un vistazo</h2>
+    <p class="intro">Solar-only y solar+batería en un mismo portafolio. Un sitio ancla pesa un orden
+      de magnitud más que el resto, con el techo limitando fuertemente la cobertura solar.</p>
+    <div class="stats" id="stats"></div>
+    <div class="twrap"><table id="ptable"></table></div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="kick">Ingeniería inversa</div>
+    <h2>La lógica de negocio, reconstruida</h2>
+    <p class="intro">Qué vende realmente el modelo y de dónde sale el ahorro.</p>
+    <div class="cards" id="logic"></div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="kick">Control de calidad</div>
+    <h2>Hallazgos del comité</h2>
+    <p class="intro">Trazados celda por celda por tres auditorías independientes. Severidad
+      P0 (salida incorrecta) · P1 (engañoso) · P2 (cosmético). Filtra por disciplina.</p>
+    <div class="filter" id="filter"></div>
+    <div class="finds" id="finds"></div>
+  </div></section>
+
+  <section class="section verdict"><div class="wrap">
+    <div class="kick">Veredicto</div>
+    <h2>¿Los Excel tienen sentido?</h2>
+    <div class="vgrid">
+      <div class="vbox yes" id="v-yes"></div>
+      <div class="vbox no" id="v-no"></div>
+    </div>
+    <p class="disclaimer">Análisis independiente de Newman Energy sobre material provisto.
+      Cifras trazadas de las fórmulas de los libros; no constituyen una propuesta comercial ni
+      asesoría de inversión. Solo uno de los seis sitios presenta datos de recibo genuinos y
+      validados de forma honesta; los demás requieren datos reales antes de cualquier cotización.
+      Recomendaciones clave antes de cotizar: usar la curva Hotel/Turismo, RTE 0.88 / DoD 0.85–0.90,
+      degradación de batería 2–3%/año, costear la carga nocturna de demanda, y separar el titular
+      del contrato de los años post-contrato.</p>
+  </div></section>
+
+  <footer class="foot"><div class="wrap">
+    <span>Newman · Soluciones en Energía</span>
+    <span>Auditoría generada por el flock de agentes Newman · 2026</span>
+  </div></footer>
+
+  <script src="assets/js/payload.js"></script>
+  <script src="assets/js/gate.js"></script>
+</body>
+</html>

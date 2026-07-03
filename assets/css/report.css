@@ -1,0 +1,85 @@
+/* Fibra Hotel analysis — report layer on top of Newman v3 (newman.css).
+   Uses the brand tokens (--bg, --navy, --accent, --magenta, --line, etc.). */
+
+.wrap { max-width: 1080px; margin-inline: auto; padding-inline: 24px; }
+.section { padding-block: clamp(48px, 7vw, 96px); }
+.section + .section { border-top: 1px solid var(--line); }
+
+/* hero */
+.hero { background: var(--navy); color: var(--on-dark); }
+.hero .wrap { padding-block: clamp(56px, 9vw, 120px); }
+.hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.01em; max-width: 16ch; }
+.hero p.lede { color: var(--on-dark); opacity:.85; max-width: 60ch; margin-top: 20px; font-size: 1.1rem; }
+.hero .meta { margin-top: 28px; display:flex; flex-wrap:wrap; gap: 10px 22px; font-family: var(--display); font-size:.8rem; letter-spacing:.04em; opacity:.7; }
+
+/* kicker label — the magenta square */
+.kick { display:inline-flex; align-items:center; gap:10px; font-family:var(--display); font-weight:600;
+  text-transform:uppercase; letter-spacing:.28em; font-size:.72rem; color:var(--accent); margin-bottom:18px; }
+.kick::before { content:""; width:8px; height:8px; background:var(--magenta); display:inline-block; }
+.hero .kick { color:#D9B3D0; }
+
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); letter-spacing:-.01em; }
+.section > .wrap > p.intro { max-width: 66ch; color:var(--muted); margin-top:8px; font-size:1.05rem; }
+
+/* stat strip */
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:20px; overflow:hidden; margin-top:36px; }
+.stat { background:var(--surface); padding:24px; }
+.stat .n { font-family:var(--display); font-weight:300; font-size:2rem; color:var(--navy); line-height:1; }
+.stat .l { color:var(--muted); font-size:.82rem; margin-top:8px; }
+
+/* portfolio table */
+.twrap { overflow-x:auto; margin-top:32px; border:1px solid var(--line); border-radius:16px; }
+table { border-collapse:collapse; width:100%; min-width:760px; font-variant-numeric:tabular-nums; }
+th,td { text-align:right; padding:12px 14px; border-bottom:1px solid var(--line); font-size:.9rem; }
+th { font-family:var(--display); font-weight:600; color:var(--navy); background:var(--bg-2);
+  position:sticky; top:0; white-space:nowrap; font-size:.78rem; letter-spacing:.02em; }
+th:first-child, td:first-child { text-align:left; font-family:var(--display); }
+tbody tr:last-child td { border-bottom:0; }
+tbody tr:hover { background:var(--accent-tint); }
+td .tag { font-size:.68rem; padding:2px 8px; border-radius:100px; font-family:var(--display); letter-spacing:.02em; }
+.tag.genuine,.tag[data-d="genuine"],.tag[data-d="genuine-bill"]{ background:#E3F1E6; color:#1f5c33; }
+.tag[data-d="fabricated"],.tag[data-d="copy-paste"]{ background:#FBE4E4; color:#8A1010; }
+.tag[data-d="circular"]{ background:#FBEFD6; color:#7a5300; }
+
+/* business logic cards */
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:36px; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:26px; }
+.card h3 { color:var(--navy); font-size:1.1rem; margin-bottom:10px; }
+.card p { color:var(--muted); font-size:.95rem; line-height:1.55; }
+
+/* findings */
+.filter { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+.filter button { font-family:var(--display); font-size:.8rem; padding:8px 16px; border-radius:100px;
+  border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer; transition:.15s; }
+.filter button[aria-pressed="true"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+.finds { margin-top:24px; display:grid; gap:12px; }
+.find { display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start;
+  background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px 22px; }
+.find .sev { font-family:var(--display); font-weight:700; font-size:.72rem; padding:5px 10px; border-radius:8px;
+  height:fit-content; letter-spacing:.03em; white-space:nowrap; }
+.sev.P0 { background:#7A0A0A; color:#fff; }
+.sev.P1 { background:#FBE4E4; color:#8A1010; }
+.sev.P2 { background:#FBEFD6; color:#7a5300; }
+.find h4 { color:var(--navy); font-size:1.02rem; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+.find h4 .lens { font-family:var(--display); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--accent); border:1px solid var(--line); padding:2px 8px; border-radius:100px; }
+.find p { color:var(--muted); font-size:.93rem; margin-top:7px; line-height:1.55; }
+
+/* verdict */
+.verdict { background:var(--bg-2); }
+.vgrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; }
+.vbox { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:28px; }
+.vbox.yes { border-top:4px solid #2f8f4e; }
+.vbox.no  { border-top:4px solid #B80E65; }
+.vbox .vh { font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; }
+.vbox.yes .vh { color:#2f8f4e; } .vbox.no .vh { color:var(--magenta-ink); }
+.vbox h3 { color:var(--navy); font-size:1.3rem; margin:6px 0 12px; }
+.vbox p { color:var(--muted); font-size:.95rem; line-height:1.6; }
+
+footer.foot { background:var(--navy); color:var(--on-dark); }
+footer.foot .wrap { padding-block:40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:.85rem; opacity:.8; }
+footer.foot a { color:#D9B3D0; }
+.disclaimer { max-width:70ch; color:var(--muted); font-size:.82rem; margin-top:28px; line-height:1.5; }
+
+@media (max-width:640px){ .vgrid{grid-template-columns:1fr} .find{grid-template-columns:1fr} }
