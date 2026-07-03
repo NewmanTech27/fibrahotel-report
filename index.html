@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fibra Hotel · Análisis Solar+BESS — Newman Energy</title>
-  <meta name="description" content="Documento protegido. Análisis de simuladores de ahorro Solar+BESS para Fibra Hotel." />
+  <title>Fibra Hotel · Ahorro Solar+BESS — Newman Energy</title>
+  <meta name="description" content="Resultados de ahorro Solar+BESS del portafolio Fibra Hotel." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="assets/css/newman.css" />
   <link rel="stylesheet" href="assets/css/report.css" />
@@ -13,6 +13,7 @@
     #gate { position: fixed; inset: 0; background: var(--navy); color: var(--on-dark);
       display: grid; place-items: center; z-index: 50; padding: 24px; }
     #gate .box { max-width: 420px; width: 100%; text-align: center; }
+    #gate .glogo { height: 26px; margin-bottom: 28px; opacity: .95; }
     #gate .kick { color: #D9B3D0; justify-content: center; }
     #gate h1 { color: #fff; font-size: 1.6rem; margin-bottom: 10px; }
     #gate p { color: var(--on-dark); opacity: .8; font-size: .95rem; margin-bottom: 26px; }
@@ -25,16 +26,22 @@
     #gate-btn:disabled { opacity: .6; cursor: default; }
     #gate-err { color: #F4B8B8; font-size: .85rem; margin-top: 14px; min-height: 1em; }
     #gate .note { margin-top: 22px; font-size: .75rem; opacity: .55; }
+    .hero .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+    .hero .brand img { height: 30px; }
+    .hero .brand span { font-family: var(--display); font-size: .72rem; letter-spacing: .28em;
+      text-transform: uppercase; color: #D9B3D0; border-left: 1px solid rgba(217,179,208,.4); padding-left: 14px; }
+    td.hl { color: var(--accent); font-weight: 700; }
+    footer.foot .flogo { height: 22px; opacity: .9; }
   </style>
 </head>
 <body class="locked">
 
   <div id="gate">
     <div class="box">
-      <div class="kick">Newman Energy · Confidencial</div>
-      <h1>Documento protegido</h1>
-      <p>Este análisis contiene datos de consumo y financieros de Fibra Hotel.
-        Ingrese la contraseña para descifrar el contenido en su navegador.</p>
+      <img class="glogo" src="assets/logo-lockup-reversed.svg" alt="Newman" />
+      <div class="kick">Confidencial</div>
+      <h1>Contenido protegido</h1>
+      <p>Datos del portafolio Fibra Hotel. Ingrese la contraseña para descifrar en su navegador.</p>
       <form id="gate-form" autocomplete="off">
         <input id="gate-pass" type="password" placeholder="Contraseña" aria-label="Contraseña" autofocus />
         <button id="gate-btn" type="submit">Entrar</button>
@@ -46,62 +53,29 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="kick">Newman Energy · Análisis independiente</div>
-      <h1>Simuladores de ahorro Solar+BESS de Fibra Hotel, revisados a fondo</h1>
-      <p class="lede">Seis libros de Excel, un comité de tres especialistas —integridad de datos,
-        física de energía y finanzas de proyecto— y una pregunta: ¿los números tienen sentido?</p>
-      <div class="meta">
-        <span>6 sitios · tarifa GDMTH</span><span>Periodo Abr 2025 – Mar 2026</span>
-        <span>MXN, sin IVA</span><span>Consumo real de recibo CFE</span>
+      <div class="brand">
+        <img src="assets/logo-lockup-reversed.svg" alt="Newman · Soluciones en Energía" />
+        <span>Soluciones en Energía</span>
       </div>
-      <a class="backlink" href="datos.html" style="display:inline-block;margin-top:18px;font-family:var(--display);font-size:.85rem;color:#D9B3D0;text-decoration:none;">Ver datos de ahorro Fibra Hotel →</a>
+      <h1 id="f-titulo"></h1>
+      <p class="lede" id="f-lede"></p>
+      <div class="stats" id="stats" style="margin-top:32px;"></div>
     </div>
   </header>
 
   <section class="section"><div class="wrap">
-    <div class="kick">Panorama</div>
-    <h2>El portafolio de un vistazo</h2>
-    <p class="intro">Solar-only y solar+batería en un mismo portafolio. Un sitio ancla pesa un orden
-      de magnitud más que el resto, con el techo limitando fuertemente la cobertura solar.</p>
-    <div class="stats" id="stats"></div>
+    <div class="kick">Resultados por inmueble</div>
+    <h2>Ahorro Solar + Baterías</h2>
     <div class="twrap"><table id="ptable"></table></div>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <div class="kick">Ingeniería inversa</div>
-    <h2>La lógica de negocio, reconstruida</h2>
-    <p class="intro">Qué vende realmente el modelo y de dónde sale el ahorro.</p>
-    <div class="cards" id="logic"></div>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <div class="kick">Control de calidad</div>
-    <h2>Hallazgos del comité</h2>
-    <p class="intro">Trazados celda por celda por tres auditorías independientes. Severidad
-      P0 (salida incorrecta) · P1 (engañoso) · P2 (cosmético). Filtra por disciplina.</p>
-    <div class="filter" id="filter"></div>
-    <div class="finds" id="finds"></div>
-  </div></section>
-
-  <section class="section verdict"><div class="wrap">
-    <div class="kick">Veredicto</div>
-    <h2>¿Los Excel tienen sentido?</h2>
-    <div class="vgrid">
-      <div class="vbox yes" id="v-yes"></div>
-      <div class="vbox no" id="v-no"></div>
-    </div>
-    <p class="disclaimer">Análisis independiente de Newman Energy sobre material provisto.
-      Cifras trazadas de las fórmulas de los libros; no constituyen una propuesta comercial ni
-      asesoría de inversión. Solo uno de los seis sitios presenta datos de recibo genuinos y
-      validados de forma honesta; los demás requieren datos reales antes de cualquier cotización.
-      Recomendaciones clave antes de cotizar: usar la curva Hotel/Turismo, RTE 0.88 / DoD 0.85–0.90,
-      degradación de batería 2–3%/año, costear la carga nocturna de demanda, y separar el titular
-      del contrato de los años post-contrato.</p>
+    <p class="disclaimer">Cifras en MXN, sin IVA. Estimación de ahorro para el portafolio en tarifa
+      GDMTH. No constituye una oferta vinculante ni asesoría de inversión; las cifras firmes se
+      emiten tras validar recibos CFE reales por inmueble. Datos personales (RPU/RFC) conforme a la
+      LFPDPPP.</p>
   </div></section>
 
   <footer class="foot"><div class="wrap">
-    <span>Newman · Soluciones en Energía</span>
-    <span>Auditoría generada por el flock de agentes Newman · 2026</span>
+    <img class="flogo" src="assets/logo-lockup-reversed.svg" alt="Newman" />
+    <span>Newman · Soluciones en Energía · 2026</span>
   </div></footer>
 
   <script src="assets/js/payload.js"></script>
